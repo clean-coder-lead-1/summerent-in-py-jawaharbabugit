@@ -33,7 +33,7 @@ def send_to_email(breachType):
   recepient = "a.b@c.com"
   # recepient repeated - refactored
   print(f'To: {recepient}')
-  breachTypeStatusDict = {'TOO_LOW' : 'too low','TOO_HIGH': 'too high'}
+  breachTypeStatusDict = {'TOO_LOW' : 'too low','TOO_HIGH': 'too high','NORMAL': 'normal'}
   status = breachTypeStatusDict[breachType]
   print('Hi, the temperature is '+status)
 
