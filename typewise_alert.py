@@ -11,12 +11,8 @@ def classify_temperature_breach(coolingType, temperatureInC):
 
   lowerLimit = 0
   upperLimit = 0
-  if coolingType == 'PASSIVE_COOLING':
-    upperLimit = 35
-  elif coolingType == 'HI_ACTIVE_COOLING':
-    upperLimit = 45
-  elif coolingType == 'MED_ACTIVE_COOLING':
-    upperLimit = 40
+  coolingTypeLimitDict = {'PASSIVE_COOLING':35,'HI_ACTIVE_COOLING':45,'MED_ACTIVE_COOLING':40}
+  upperLimit = coolingTypeLimitDict[coolingType]
   return infer_breach(temperatureInC, lowerLimit, upperLimit)
 
 
@@ -37,11 +33,7 @@ def send_to_email(breachType):
   recepient = "a.b@c.com"
   # recepient repeated - refactored
   print(f'To: {recepient}')
-  if breachType == 'TOO_LOW':
-    # print('Hi, the temperature is too low')
-    status = 'too low'
-  elif breachType == 'TOO_HIGH':
-    # print('Hi, the temperature is too high')
-    status = 'too high'
+  breachTypeStatusDict = {'TOO_LOW' : 'too low','TOO_HIGH': 'too high'}
+  status = breachTypeStatusDict[breachType]
   print('Hi, the temperature is '+status)
 
